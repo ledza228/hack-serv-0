@@ -9,12 +9,12 @@ import java.util.List;
 @AllArgsConstructor
 public class Vertice {
 
-    private Long id;
+    private Integer id;
 
-    private List<Integer> coords;
+    private V3 coords;
 
     private VerticesTypes type;
 
-    private List<Long> arrIDs;
+    private List<Integer> arrIDs;
 
 }

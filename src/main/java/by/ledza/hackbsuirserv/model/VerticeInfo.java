@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class VerticeName {
+public class VerticeInfo {
 
-    private Long id;
+    private Integer id;
     private String name;
 }

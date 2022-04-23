@@ -1,7 +1,7 @@
 package by.ledza.hackbsuirserv.controller;
 
 import by.ledza.hackbsuirserv.model.Vertice;
-import by.ledza.hackbsuirserv.model.VerticeName;
+import by.ledza.hackbsuirserv.model.VerticeInfo;
 import by.ledza.hackbsuirserv.service.VerticesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +22,8 @@ public class VerticesController {
         return verticesService.getAllVertices();
     }
 
-    @GetMapping("/names")
-    public List<VerticeName> getAllVerticesNamesAPI(){
+    @GetMapping("/info")
+    public List<VerticeInfo> getAllVerticesInfoAPI(){
         return verticesService.getVerticesNames();
     }
 

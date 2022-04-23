@@ -1,6 +1,6 @@
 package by.ledza.hackbsuirserv.model;
 
-public enum VerticesTypes {
+public enum NodeTypes {
     Junktion,
     Pavilion,
     Exit

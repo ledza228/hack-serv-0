@@ -3,10 +3,18 @@ package by.ledza.hackbsuirserv.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
-public class VerticeInfo {
+public class Node {
 
     private Integer id;
-    private String name;
+
+    private V3 coords;
+
+    private NodeTypes type;
+
+    private List<Integer> arrIDs;
+
 }

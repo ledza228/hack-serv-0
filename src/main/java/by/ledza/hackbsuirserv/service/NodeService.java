@@ -20,12 +20,12 @@ public class NodeService {
     public List<Node> getAllNodes(){
         List<Node> nodes = new ArrayList<>();
 
-        nodes.add(new Node(0, new V3(Arrays.asList(61,75,0)), NodeTypes.Exit, List.of(1)));
-        nodes.add(new Node(1, new V3(Arrays.asList(206,160,0)), NodeTypes.Pavilion, List.of(0, 2)));
-        nodes.add(new Node(2, new V3(Arrays.asList(302,251,0)), NodeTypes.Junktion, List.of(1, 3, 5)));
-        nodes.add(new Node(3, new V3(Arrays.asList(311,382,0)), NodeTypes.Pavilion, List.of(2, 4)));
-        nodes.add(new Node(4, new V3(Arrays.asList(480,383,0)), NodeTypes.Pavilion, List.of(3, 5)));
-        nodes.add(new Node(5, new V3(Arrays.asList(549,253,0)), NodeTypes.Pavilion, List.of(4, 2)));
+        nodes.add(new Node(0, new V3(Arrays.asList(61,75,0)), 0, List.of(1)));
+        nodes.add(new Node(1, new V3(Arrays.asList(206,160,0)), 2, List.of(0, 2)));
+        nodes.add(new Node(2, new V3(Arrays.asList(302,251,0)), 1, List.of(1, 3, 5)));
+        nodes.add(new Node(3, new V3(Arrays.asList(311,382,0)), 2, List.of(2, 4)));
+        nodes.add(new Node(4, new V3(Arrays.asList(480,383,0)), 2, List.of(3, 5)));
+        nodes.add(new Node(5, new V3(Arrays.asList(549,253,0)), 2, List.of(4, 2)));
 
         return nodes;
     }

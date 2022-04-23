@@ -1,5 +1,6 @@
 package by.ledza.hackbsuirserv.model;
 
+import io.swagger.models.auth.In;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -13,7 +14,7 @@ public class Node {
 
     private V3 coords;
 
-    private NodeTypes type;
+    private Integer type;
 
     private List<Integer> arrIDs;
 

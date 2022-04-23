@@ -13,7 +13,7 @@ public class NodeDTO {
 
     private V3 coords;
 
-    private NodeTypes type;
+    private Integer type;
 
     private List<Integer> arrIDs;
 

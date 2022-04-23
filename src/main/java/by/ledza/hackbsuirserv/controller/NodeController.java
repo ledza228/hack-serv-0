@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/vertices/")
+@RequestMapping("/api/v1/nodes")
 public class NodeController {
 
     @Autowired
     NodeService nodeService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<NodeDTO> getAllVerticesAPI(){
         return nodeService.getNodesDTO();
     }

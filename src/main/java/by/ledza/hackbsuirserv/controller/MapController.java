@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 @RestController
 public class MapController {
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<FileSystemResource> downloadMapAPI(){
         FileSystemResource resource = new FileSystemResource("src/main/resources/static/map.svg");
 

@@ -6,7 +6,10 @@ import by.ledza.hackbsuirserv.model.Node;
 import by.ledza.hackbsuirserv.model.NodeInfo;
 import by.ledza.hackbsuirserv.model.NodeTypes;
 import by.ledza.hackbsuirserv.model.V3;
+import by.ledza.hackbsuirserv.repository.NodeInfoRepository;
+import by.ledza.hackbsuirserv.repository.NodeRepository;
 import org.mapstruct.factory.Mappers;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,31 +19,19 @@ import java.util.List;
 @Service
 public class NodeService {
 
+    @Autowired
+    private NodeRepository nodeRepository;
+
+    @Autowired
+    private NodeInfoRepository nodeInfoRepository;
+
     NodeMapper nodeMapper = Mappers.getMapper(NodeMapper.class);
     public List<Node> getAllNodes(){
-        List<Node> nodes = new ArrayList<>();
-
-        nodes.add(new Node(0, new V3(Arrays.asList(61,75,0)), 0, List.of(1)));
-        nodes.add(new Node(1, new V3(Arrays.asList(206,160,0)), 2, List.of(0, 2)));
-        nodes.add(new Node(2, new V3(Arrays.asList(302,251,0)), 1, List.of(1, 3, 5)));
-        nodes.add(new Node(3, new V3(Arrays.asList(311,382,0)), 2, List.of(2, 4)));
-        nodes.add(new Node(4, new V3(Arrays.asList(480,383,0)), 2, List.of(3, 5)));
-        nodes.add(new Node(5, new V3(Arrays.asList(549,253,0)), 2, List.of(4, 2)));
-
-        return nodes;
+        return nodeRepository.findAll();
     }
 
     public List<NodeInfo> getNodesName(){
-        List<NodeInfo> NodeNames = new ArrayList<>();
-
-        NodeNames.add(new NodeInfo(0, "столовая БГУИР"));
-        NodeNames.add(new NodeInfo(1, "McDonalds"));
-        NodeNames.add(new NodeInfo(2, "Zara"));
-        NodeNames.add(new NodeInfo(3, "StarBucks"));
-        NodeNames.add(new NodeInfo(4, "У дяди Васи"));
-        NodeNames.add(new NodeInfo(5, "столовая БНТУ"));
-
-        return NodeNames;
+        return nodeInfoRepository.findAll();
     }
 
     public List<NodeDTO> getNodesDTO(){
@@ -49,4 +40,13 @@ public class NodeService {
         return nodes;
     }
 
+    public void putNodesName(List<NodeInfo> nodeInfos){
+        nodeInfoRepository.deleteAll();
+        nodeInfoRepository.saveAll(nodeInfos);
+    }
+
+    public void putNodes(List<Node> nodes){
+        nodeRepository.deleteAll();
+        nodeRepository.saveAll(nodes);
+    }
 }

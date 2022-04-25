@@ -2,11 +2,13 @@ package by.ledza.hackbsuirserv.controller;
 
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 @RequestMapping("/api/v1/map/")
 @RestController
@@ -14,8 +16,12 @@ public class MapController {
 
     @GetMapping("")
     public ResponseEntity<FileSystemResource> downloadMapAPI(){
-        FileSystemResource resource = new FileSystemResource("src/main/resources/static/map.svg");
 
+        if (!Files.exists(Path.of("map.svg"))){
+            return null;
+        }
+
+        FileSystemResource resource = new FileSystemResource("map.svg");
         MediaType mediaType = MediaTypeFactory
                 .getMediaType(resource)
                 .orElse(MediaType.APPLICATION_OCTET_STREAM);
@@ -26,6 +32,19 @@ public class MapController {
         ContentDisposition disposition = ContentDisposition.inline().filename("map.svg").build();
         headers.setContentDisposition(disposition);
         return new ResponseEntity<>(resource, headers, HttpStatus.OK);
+    }
+
+     @PostMapping(value = "{fileName}", headers = {"content-type=multipart/form-data"})
+    public ResponseEntity<String> uploadMapAPI(@RequestParam("file") MultipartFile file) throws IOException {
+        File descr = new File("map.svg");
+
+        try (FileOutputStream outputStream = new FileOutputStream(descr)){
+            outputStream.write(file.getBytes());
+        }
+        catch (Exception e){
+            return new ResponseEntity<String>("Error while saving!",HttpStatus.BAD_GATEWAY);
+        }
+        return new ResponseEntity<>("Saved!", HttpStatus.OK);
     }
 
 }

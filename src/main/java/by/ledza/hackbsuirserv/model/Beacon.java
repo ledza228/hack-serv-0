@@ -19,28 +19,4 @@ public class Beacon {
 
     private List<Integer> coord;
     private Integer node;
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
-    public List<Integer> getCoord() {
-        return coord;
-    }
-
-    public void setCoord(List<Integer> coord) {
-        this.coord = coord;
-    }
-
-    public Integer getNode() {
-        return node;
-    }
-
-    public void setNode(Integer node) {
-        this.node = node;
-    }
 }

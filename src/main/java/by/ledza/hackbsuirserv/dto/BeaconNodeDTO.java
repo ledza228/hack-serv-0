@@ -9,7 +9,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class BeaconNodeDTO {
     private List<Node> nodes;
     private List<NodeInfo> nodeInfos;

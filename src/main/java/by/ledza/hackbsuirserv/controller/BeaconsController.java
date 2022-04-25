@@ -3,6 +3,7 @@ package by.ledza.hackbsuirserv.controller;
 import by.ledza.hackbsuirserv.dto.BeaconNodeDTO;
 import by.ledza.hackbsuirserv.model.Beacon;
 import by.ledza.hackbsuirserv.service.BeaconService;
+import by.ledza.hackbsuirserv.service.NodeService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,9 @@ public class BeaconsController {
     @Autowired
     BeaconService beaconService;
 
+    @Autowired
+    NodeService nodeService;
+
     @GetMapping("")
     public List<Beacon> allBeaconsAPI(){
         return beaconService.getAllBeacons();
@@ -27,6 +31,8 @@ public class BeaconsController {
     @PostMapping(value = "", consumes = "application/json")
     public BeaconNodeDTO postBeaconsAPI(@RequestBody BeaconNodeDTO beaconNodeDTO){
         beaconService.putAllBeacons(beaconNodeDTO.getBeacons());
+        nodeService.putNodes(beaconNodeDTO.getNodes());
+        nodeService.putNodesName(beaconNodeDTO.getNodeInfos());
         return beaconNodeDTO;
     }
 }

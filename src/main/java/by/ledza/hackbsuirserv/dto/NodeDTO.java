@@ -11,7 +11,7 @@ public class NodeDTO {
 
     private Integer id;
 
-    private V3 coords;
+    private List<Integer> coord;
 
     private Integer type;
 

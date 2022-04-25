@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class Node {
     @Id
     private Integer id;
 
-    private List<Integer> coord;
+    private V3 coord;
     private Integer type;
     private List<Integer> arrIDs;
 }

@@ -17,6 +17,6 @@ public class Beacon {
     @Id
     private UUID uuid;
 
-    private List<Integer> coord;
+    private V3 coord;
     private Integer node;
 }

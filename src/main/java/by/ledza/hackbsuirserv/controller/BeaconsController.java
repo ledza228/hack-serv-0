@@ -2,8 +2,11 @@ package by.ledza.hackbsuirserv.controller;
 
 import by.ledza.hackbsuirserv.dto.BeaconNodeDTO;
 import by.ledza.hackbsuirserv.model.Beacon;
+import by.ledza.hackbsuirserv.service.BeaconMockedService;
 import by.ledza.hackbsuirserv.service.BeaconService;
+import by.ledza.hackbsuirserv.service.IBeaconService;
 import by.ledza.hackbsuirserv.service.NodeService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +21,8 @@ import java.util.List;
 public class BeaconsController {
 
     @Autowired
-    BeaconService beaconService;
+    @Qualifier("mock")
+    IBeaconService beaconService;
 
     @Autowired
     NodeService nodeService;

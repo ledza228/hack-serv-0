@@ -29,6 +29,5 @@ public class MongoConfig {
         return new MongoTemplate(
                 Objects.requireNonNull(mongoClientFactoryBean().getObject()),
                 Objects.requireNonNull(env.getProperty("spring.data.mongodb.database")));
-
     }
 }

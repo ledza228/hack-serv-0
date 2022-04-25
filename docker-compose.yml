@@ -4,6 +4,17 @@ services:
   hack-bsuir-serv:
     container_name: hack-bsuir-serv
     build: ./
+    depends_on:
+      - mongodb
     ports:
       - "7770:7770"
 
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/apps/mongo:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=
+      - MONGO_INITDB_ROOT_PASSWORD=

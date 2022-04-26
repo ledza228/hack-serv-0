@@ -3,14 +3,9 @@ package by.ledza.hackbsuirserv.controller;
 import by.ledza.hackbsuirserv.dto.BeaconNodeDTO;
 import by.ledza.hackbsuirserv.dto.NodeDTO;
 import by.ledza.hackbsuirserv.service.INodeService;
-import by.ledza.hackbsuirserv.service.NodeService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +14,7 @@ import java.util.List;
 public class NodeController {
 
     @Autowired
-    @Qualifier("mockedNode")
+    @Qualifier("prod")
     INodeService nodeService;
 
     @GetMapping("")
@@ -28,9 +23,11 @@ public class NodeController {
     }
 
     @PostMapping(value = "", consumes = "application/json")
-    public BeaconNodeDTO postAllVerticesAPI(@RequestBody BeaconNodeDTO beaconNodeDTO){
+    public void postNodesAndNodeInfoAPI(@RequestBody BeaconNodeDTO beaconNodeDTO){
         nodeService.putNodes(beaconNodeDTO.getNodes());
+        System.out.println("nodes was saved");
+        System.out.println(beaconNodeDTO.getNodeInfos().size());
         nodeService.putNodesName(beaconNodeDTO.getNodeInfos());
-        return beaconNodeDTO;
+        System.out.println("names was saved");
     }
 }

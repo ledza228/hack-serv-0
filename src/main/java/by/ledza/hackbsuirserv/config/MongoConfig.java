@@ -1,5 +1,6 @@
 package by.ledza.hackbsuirserv.config;
 
+import com.mongodb.ConnectionString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,8 +19,10 @@ public class MongoConfig {
     @Bean
     public MongoClientFactoryBean mongoClientFactoryBean() {
         MongoClientFactoryBean factoryBean = new MongoClientFactoryBean();
-        factoryBean.setHost(env.getProperty("spring.data.mongodb.host"));
-        factoryBean.setPort(Integer.parseInt(Objects.requireNonNull(env.getProperty("spring.data.mongodb.port"))));
+        String uri = "mongodb://" + env.getProperty("spring.data.mongodb.username") + ":" +
+                env.getProperty("spring.data.mongodb.password") + "@" + env.getProperty("spring.data.mongodb.host") +
+                ":" + env.getProperty("spring.data.mongodb.port");
+        factoryBean.setConnectionString(new ConnectionString(uri));
         return factoryBean;
     }
 

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Qualifier("mockedNode")
+@Qualifier("mock")
 public class NodeMockedService implements INodeService{
     @Override
     public List<Node> getAllNodes() {

@@ -16,9 +16,10 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Service
-@Qualifier("nodeProd")
+@Qualifier("prod")
 public class NodeService implements INodeService{
 
     @Autowired
@@ -38,7 +39,13 @@ public class NodeService implements INodeService{
 
     public List<NodeDTO> getNodesDTO(){
         List<NodeDTO> nodes =  nodeMapper.nodesToNodeDTOs(getAllNodes());
-        nodes.forEach(i -> i.setName(getNodesName().get(i.getId()).getName()));
+        List<NodeInfo> infos = getNodesName();
+        for (NodeInfo info : infos){
+            nodes.forEach(node -> {
+                if (node.getId().equals(info.getId()))
+                    node.setName(info.getName());
+            });
+        }
         return nodes;
     }
 

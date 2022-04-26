@@ -4,9 +4,8 @@ import by.ledza.hackbsuirserv.model.Beacon;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
-import java.util.UUID;
 
-public interface BeaconRepository extends MongoRepository<Beacon, UUID> {
+public interface BeaconRepository extends MongoRepository<Beacon, String> {
     public List<Beacon> findAll();
     public void deleteAll();
 }

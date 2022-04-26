@@ -75,6 +75,15 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
         V3 position = new V3(x, y, 0);
         x += random.nextInt(10) - 5;
         y += random.nextInt(10) - 5;
+
+        if (x < 0){
+            x = 100;
+        }
+
+        if (y < 0){
+            y = 100;
+        }
+
         JSONObject json = new JSONObject(position);
         System.out.println(message.getPayload());
         session.sendMessage(new TextMessage(json.toString()));

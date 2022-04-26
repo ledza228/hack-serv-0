@@ -10,6 +10,7 @@ import by.ledza.hackbsuirserv.repository.NodeInfoRepository;
 import by.ledza.hackbsuirserv.repository.NodeRepository;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
+@Qualifier("nodeProd")
 public class NodeService implements INodeService{
 
     @Autowired

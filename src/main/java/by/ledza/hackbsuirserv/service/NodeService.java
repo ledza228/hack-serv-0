@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class NodeService {
+public class NodeService implements INodeService{
 
     @Autowired
     private NodeRepository nodeRepository;

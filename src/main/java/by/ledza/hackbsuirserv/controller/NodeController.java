@@ -2,9 +2,11 @@ package by.ledza.hackbsuirserv.controller;
 
 import by.ledza.hackbsuirserv.dto.BeaconNodeDTO;
 import by.ledza.hackbsuirserv.dto.NodeDTO;
+import by.ledza.hackbsuirserv.service.INodeService;
 import by.ledza.hackbsuirserv.service.NodeService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +19,8 @@ import java.util.List;
 public class NodeController {
 
     @Autowired
-    NodeService nodeService;
+    @Qualifier("mockedNode")
+    INodeService nodeService;
 
     @GetMapping("")
     public List<NodeDTO> getAllVerticesAPI(){

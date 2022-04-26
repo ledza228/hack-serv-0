@@ -36,7 +36,7 @@ public class MapController {
 
      @PostMapping(value = "{fileName}", headers = {"content-type=multipart/form-data"})
     public ResponseEntity<String> uploadMapAPI(@RequestParam("file") MultipartFile file) throws IOException {
-        File descr = new File("map.svg");
+        File descr = new File("map.png");
 
         try (FileOutputStream outputStream = new FileOutputStream(descr)){
             outputStream.write(file.getBytes());

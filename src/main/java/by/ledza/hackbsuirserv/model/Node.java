@@ -16,7 +16,7 @@ public class Node {
     @Id
     private Integer id;
 
-    private V3 coord;
+    private V3 cord;
     private Integer type;
     private List<Integer> arrIDs;
 }

@@ -14,6 +14,6 @@ public class Beacon {
     private String mac;
 
     private Integer tx_power;
-    private V3 coord;
+    private V3 cord;
     private Integer node;
 }

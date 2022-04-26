@@ -28,6 +28,9 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
 
     private ObjectMapper jsonMapper = new ObjectMapper();
 
+    private Integer x = 100;
+    private Integer y = 100;
+
     private HashMap<WebSocketSession, DatagramSocket> sessionMap = new HashMap<>();
 
     @Override
@@ -69,7 +72,9 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
             return;
         }
 
-        V3 position = new V3(random.nextInt(1000), random.nextInt(1000), 0);
+        V3 position = new V3(x, y, 0);
+        x += random.nextInt(10) - 5;
+        y += random.nextInt(10) - 5;
         JSONObject json = new JSONObject(position);
         System.out.println(message.getPayload());
         session.sendMessage(new TextMessage(json.toString()));

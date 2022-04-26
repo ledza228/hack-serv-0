@@ -1,4 +1,4 @@
-package by.ledza.hackbsuirserv.dto;
+package by.ledza.hackbsuirserv.socket.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

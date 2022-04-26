@@ -17,11 +17,11 @@ public class MapController {
     @GetMapping("")
     public ResponseEntity<FileSystemResource> downloadMapAPI(){
 
-        if (!Files.exists(Path.of("map.svg"))){
+        if (!Files.exists(Path.of("map.png"))){
             return null;
         }
 
-        FileSystemResource resource = new FileSystemResource("map.svg");
+        FileSystemResource resource = new FileSystemResource("map.png");
         MediaType mediaType = MediaTypeFactory
                 .getMediaType(resource)
                 .orElse(MediaType.APPLICATION_OCTET_STREAM);
@@ -29,7 +29,7 @@ public class MapController {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(mediaType);
 
-        ContentDisposition disposition = ContentDisposition.inline().filename("map.svg").build();
+        ContentDisposition disposition = ContentDisposition.inline().filename("map.png").build();
         headers.setContentDisposition(disposition);
         return new ResponseEntity<>(resource, headers, HttpStatus.OK);
     }

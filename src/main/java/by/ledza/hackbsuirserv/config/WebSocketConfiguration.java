@@ -1,6 +1,7 @@
 package by.ledza.hackbsuirserv.config;
 
 import by.ledza.hackbsuirserv.socket.WebSocketHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
@@ -10,8 +11,11 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @EnableWebSocket
 public class WebSocketConfiguration implements WebSocketConfigurer {
 
+    @Autowired
+    private WebSocketHandler webSocketHandler;
+
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(new WebSocketHandler(),"/location");
+        registry.addHandler(webSocketHandler,"/location");
     }
 }

@@ -15,7 +15,7 @@ public class BeaconNodeDTO {
     @JsonProperty("nodes")
     private List<Node> nodes;
 
-    @JsonProperty("idNamePairs")
+    @JsonProperty("nodeInfos")
     private List<NodeInfo> nodeInfos;
 
     @JsonProperty("beacons")

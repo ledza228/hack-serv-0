@@ -19,9 +19,7 @@ public class MongoConfig {
     @Bean
     public MongoClientFactoryBean mongoClientFactoryBean() {
         MongoClientFactoryBean factoryBean = new MongoClientFactoryBean();
-        String uri = "mongodb://" + env.getProperty("spring.data.mongodb.username") + ":" +
-                env.getProperty("spring.data.mongodb.password") + "@" + env.getProperty("spring.data.mongodb.host") +
-                ":" + env.getProperty("spring.data.mongodb.port");
+        String uri = env.getProperty("spring.data.mongodb.uri");
         factoryBean.setConnectionString(new ConnectionString(uri));
         return factoryBean;
     }

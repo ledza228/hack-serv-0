@@ -25,9 +25,6 @@ public class NodeController {
     @PostMapping(value = "", consumes = "application/json")
     public void postNodesAndNodeInfoAPI(@RequestBody BeaconNodeDTO beaconNodeDTO){
         nodeService.putNodes(beaconNodeDTO.getNodes());
-        System.out.println("nodes was saved");
-        System.out.println(beaconNodeDTO.getNodeInfos().size());
         nodeService.putNodesName(beaconNodeDTO.getNodeInfos());
-        System.out.println("names was saved");
     }
 }

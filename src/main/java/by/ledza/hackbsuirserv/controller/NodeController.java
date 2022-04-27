@@ -14,7 +14,7 @@ import java.util.List;
 public class NodeController {
 
     @Autowired
-    @Qualifier("prod")
+    @Qualifier("mock")
     INodeService nodeService;
 
     @GetMapping("")

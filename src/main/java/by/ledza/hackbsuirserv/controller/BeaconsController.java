@@ -19,7 +19,7 @@ import java.util.List;
 public class BeaconsController {
 
     @Autowired
-    @Qualifier("prod")
+    @Qualifier("mock")
     IBeaconService beaconService;
 
     @Autowired

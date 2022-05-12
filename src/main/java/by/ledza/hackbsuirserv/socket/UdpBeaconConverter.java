@@ -35,8 +35,6 @@ public class UdpBeaconConverter {
         data.write(ByteBuffer.allocate(20).putInt(0).array());
         data.write(ByteBuffer.allocate(252).putInt(androidBeacon.getRssi()).array());
 
-        System.out.println(data.size());
-        System.out.println(data.toByteArray());
         return data.toByteArray();
 
     }

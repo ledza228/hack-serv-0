@@ -11,8 +11,8 @@ import java.net.DatagramSocket;
 
 public class UdpReceiverRunnable implements Runnable{
 
-    private WebSocketSession session;
-    private DatagramSocket socket;
+    private final WebSocketSession session;
+    private final DatagramSocket socket;
 
     public UdpReceiverRunnable(WebSocketSession session, DatagramSocket socket){
         this.session = session;
@@ -35,8 +35,12 @@ public class UdpReceiverRunnable implements Runnable{
             DatagramPacket packet = new DatagramPacket(buffer, 300);
             socket.receive(packet);
 
+            System.out.println("Get something");
+
             UdpBeaconConverter udpBeaconConverter = new UdpBeaconConverter();
             V3 pos = udpBeaconConverter.convertPacketToJson(packet.getData());
+            System.out.println("Converted");
+            System.out.println(pos);
 
             if (pos == null)
                 continue;

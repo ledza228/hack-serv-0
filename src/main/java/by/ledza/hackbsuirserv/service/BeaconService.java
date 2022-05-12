@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@Service
+@Qualifier("prod")
 public class BeaconService implements IBeaconService{
 
     @Autowired

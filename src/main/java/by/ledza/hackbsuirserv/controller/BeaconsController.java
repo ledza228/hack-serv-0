@@ -20,11 +20,11 @@ import java.util.List;
 public class BeaconsController {
 
     @Autowired
-    @Qualifier("mock")
+    @Qualifier("prod")
     IBeaconService beaconService;
 
     @Autowired
-    @Qualifier("mock")
+    @Qualifier("prod")
     INodeService nodeService;
 
     @GetMapping("")

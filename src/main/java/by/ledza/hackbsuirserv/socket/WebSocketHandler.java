@@ -26,12 +26,7 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
     @Autowired
     private DatagramSocketFabric datagramSocketFabric;
 
-    private Random random = new Random();
-
-    private ObjectMapper jsonMapper = new ObjectMapper();
-
-    private Integer x = 100;
-    private Integer y = 100;
+    private final ObjectMapper jsonMapper = new ObjectMapper();
 
     @Value("${udp.server.hostname}")
     private String udpHostName;
@@ -39,7 +34,7 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
     @Value("${udp.server.port}")
     private String udpHostPort;
 
-    private HashMap<WebSocketSession, DatagramSocket> sessionMap = new HashMap<>();
+    private final HashMap<WebSocketSession, DatagramSocket> sessionMap = new HashMap<>();
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
@@ -81,20 +76,6 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
             System.out.println("beacon parsing error");
             return;
         }
-
-        //mock DELETE LATER
-        V3 position = new V3(x, y, 0);
-        x += random.nextInt(10) - 5;
-        y += random.nextInt(10) - 5;
-        if (x < 0){
-            x = 100;
-        }
-        if (y < 0){
-            y = 100;
-        }
-        JSONObject json = new JSONObject(position);
-        session.sendMessage(new TextMessage(json.toString()));
-        //
     }
 
 

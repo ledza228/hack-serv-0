@@ -8,19 +8,13 @@ services:
       - "7770:7770"
     depends_on:
       - mongodb
-    networks:
-      - network-backend
 
   mongodb:
     image: mongo:latest
+    ports:
+      - "27017:27017"
     volumes:
       - ~/apps/mongo:/data/db
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=root
-    networks:
-      - network-backend
-
-networks:
-  network-backend:
-    external: true
+      - MONGO_INITDB_ROOT_USERNAME=
+      - MONGO_INITDB_ROOT_PASSWORD=
